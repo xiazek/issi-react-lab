@@ -1,16 +1,37 @@
 import './App.css';
+import {useState} from "react";
 
 function App() {
-  let title = "Wall-E";
+  const [title, setTitle] = useState('Wall-E');
 
   function handleChange(event) {
     console.log(event.target.value);
+    setTitle(event.target.value);
+  }
+
+  let hint
+  switch (true) {
+    case title.length === 0:
+      hint = 0;
+      break;
+    case title.length <= 3:
+      hint = "Tytuł jest za krótki";
+      break;
+    case title.length >= 4 && title.length <= 10:
+      hint = "Wspaniały tytuł";
+      break;
+    case title.length > 10:
+      hint = "Tytuł jest za długi";
+      break;
   }
 
   return (
     <div>
       <h1>My favourite movies to watch</h1>
       <h2>My favourite movies for today is {title}</h2>
+      {
+        title.length > 0 && <div>{hint}</div>
+      }
       <input type="text" onChange={handleChange}/>
     </div>
   );
