@@ -8,6 +8,7 @@ function App() {
     console.log(event.target.value);
     setTitle(event.target.value);
   }
+  let handleClick = () => alert(title);
 
   let hint
   switch (true) {
@@ -33,6 +34,8 @@ function App() {
         title.length > 0 && <div>{hint}</div>
       }
       <input type="text" onChange={handleChange}/>
+      {/*<button onClick={() => alert(title)}>Pokaż tytuł filmu</button>*/}
+      <button onClick={handleClick}>Pokaż tytuł filmu</button>
     </div>
   );
 }
