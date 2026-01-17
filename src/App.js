@@ -8,6 +8,11 @@ function App() {
     const [title, setTitle] = useState('');
     const [year, setYear] = useState('');
     const [movies, setMovies] = useState([]);
+    const [showForm, setFormShow] = useState(false);
+
+    function toggleMovieForm() {
+        setFormShow(!showForm);
+    }
 
     let message;
     if (title.length < 5) {
@@ -24,7 +29,8 @@ function App() {
             <h1>My favourite movies to watch</h1>
 
             <MoviesList movies={movies}/>
-            <MovieForm onMovieSubmit={(movie) => setMovies([...movies, movie])}/>
+            <button onClick={toggleMovieForm}>Add movie</button>
+            <MovieForm onMovieSubmit={(movie) => setMovies([...movies, movie])} showForm={showForm}/>
         </div>
     );
 }

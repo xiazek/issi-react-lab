@@ -14,7 +14,7 @@ export default function MovieForm(props) {
     setYear('');
   }
 
-  return <form onSubmit={addMovie}>
+  let addMovieForm = <form onSubmit={addMovie}>
     <h2>Add movie</h2>
     <div>
       <label>Tytuł</label>
@@ -26,4 +26,6 @@ export default function MovieForm(props) {
     </div>
     <button>Add a movie</button>
   </form>;
+
+  if (props.showForm) return addMovieForm; else return <div>click above to add movie</div>
 }
